@@ -16,13 +16,13 @@ const Definitions = ({ word, category, meanings, lightMode }) => {
           style={{ backgroundColor: lightMode ? "#fff" : "#282c34", borderRadius: 10 }}
           controls
         >
-          Ваш браузер не поддерживает аудио элемент
+          Your browser does not support the audio element
         </audio>
       )}
 
       <div className="meanings flex flex-col overflow-y-scroll max-h-[60%] min-h-0 border-solid px-1 overflow-x-hidden border-2 border-neutral-700">
         {word === "" ? (
-          <span className="subTitle">Начните с ввода слова в поиске</span>
+          <span className="subTitle">Start by typing the word in the search</span>
         ) : (
           meanings.map((mean) => {
             return mean.meanings.map((item) => {
