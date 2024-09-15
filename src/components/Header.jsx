@@ -37,7 +37,7 @@ const Header = ({ category, setCategory, word, setWord }) => {
           >
             {categories.map((option) => (
               <MenuItem key={option.label} value={option.label}>
-                {option.label}
+                {option.value}
               </MenuItem>
             ))}
           </TextField>
