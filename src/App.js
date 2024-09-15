@@ -1,10 +1,38 @@
 // import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
+import { useEffect, useState } from 'react';
+import { Container } from '@mui/material';
+import { Header } from './components/Header';
 
 function App() {
+  const [word, setWord] = useState("");
+  const [meanings, setMeanings] = useState([]);
+
+  const dictionaryApi = async () => {
+    try {
+      const data = await axios.get(
+        'https://api.dictionaryapi.dev/api/v2/entries/en/plane'
+      );
+
+      setMeanings(data.data)
+    } catch (error) {
+      console.log('error ', error);
+    }
+  }
+
+  console.log(meanings);
+
+  useEffect(() => {
+    dictionaryApi()
+  }, [])
+
   return (
-    <div className="bg-red-500">
-      123
+    <div className="App" style={{height:'100vh', backgroundColor:'#282c34', color:'white'}}>
+      <Container maxWidth='md' style={{display:'flex', flexDirection: 'column', height:'100vh'}}>
+        <Header />
+        Dictionary
+      </Container>
     </div>
   );
 }
