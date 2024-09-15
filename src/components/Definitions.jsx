@@ -11,7 +11,7 @@ const Definitions = ({ word, category, meanings, lightMode }) => {
     <ThemeProvider theme={theme}>
       {meanings[0] && word && category === "en" && (
         <audio
-          className="py-1 w-full"
+          className="py-1 pb-5 w-full"
           src={meanings[0].phonetics[0] && meanings[0].phonetics[0].audio}
           style={{ backgroundColor: lightMode ? "#fff" : "#282c34", borderRadius: 10 }}
           controls
@@ -20,7 +20,7 @@ const Definitions = ({ word, category, meanings, lightMode }) => {
         </audio>
       )}
 
-      <div className="meanings flex flex-col overflow-y-scroll max-h-[70%] min-h-0 border-solid px-1 overflow-x-hidden border-2 border-neutral-700">
+      <div className="meanings flex flex-col overflow-y-scroll max-h-[60%] min-h-0 border-solid px-1 overflow-x-hidden border-2 border-neutral-700">
         {word === "" ? (
           <span className="subTitle">Начните с ввода слова в поиске</span>
         ) : (

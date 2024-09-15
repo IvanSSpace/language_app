@@ -31,12 +31,10 @@ function App() {
   useEffect(() => {
     if (debouncedWord) {
       dictionaryApi();
+    } else {
+      setMeanings([]);
     }
   }, [debouncedWord, category]);
-
-  useEffect(() => {
-    console.log({ category });
-  }, [category]);
 
   const handleChange = (event) => {
     setLightMode(event.target.checked);
