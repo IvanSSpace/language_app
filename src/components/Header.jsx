@@ -1,38 +1,50 @@
-import { createTheme, MenuItem, TextField, ThemeProvider } from "@mui/material"
+import { createTheme, MenuItem, TextField, ThemeProvider } from "@mui/material";
+import { categories } from "../data/category";
 
-
-const Header = () => {
+const Header = ({ category, setCategory, word, setWord }) => {
   const darkTheme = createTheme({
     palette: {
       primary: {
-        main: '#fff',
+        main: "#fff",
       },
-      mode: 'dark',
+      mode: "dark",
     },
   });
-  
 
-return (
-  <div className="header flex flex-col items-center justify-evenly h-[200px] w-full">
-    <span className="title text-4xl font-montserrat font-extralight uppercase">Word Hunt</span>
-    <div className="inputs ">
-      <ThemeProvider theme={darkTheme}>
-        <TextField id="standard-basic" label="Standard" variant="standard" />
-        <TextField
-          id="outlined-select-currency"
-          select
-          label="Select"
-          // defaultValue="EUR"
-          helperText="Please select your currency"
-        >
-            <MenuItem>
-              english
-            </MenuItem>
-        </TextField>
-      </ThemeProvider>
+  const handleChange = (e) => {
+    setCategory(e.target.value);
+    setWord("");
+  };
+
+  return (
+    <div className="header flex flex-col items-center justify-evenly h-[200px] w-full">
+      <span className="title text-4xl font-montserrat font-extralight uppercase">{word ? word : "Word Hunt"}</span>
+      <div className="inputs flex space-x-4 sm:w-[70%] bg-red-500">
+        <ThemeProvider theme={darkTheme}>
+          <TextField
+            className="search w-[50%]"
+            label="Search a Word"
+            id="standard-basic"
+            value={word}
+            onChange={(e) => setWord(e.target.value)}
+          />
+          <TextField
+            className="select w-[50%]"
+            select
+            label="Language"
+            value={category}
+            onChange={(e) => handleChange(e)}
+          >
+            {categories.map((option) => (
+              <MenuItem key={option.label} value={option.label}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </ThemeProvider>
+      </div>
     </div>
-  </div>
-)
-}
+  );
+};
 
-export {Header}
+export { Header };

@@ -13,4 +13,4 @@ const categories = [
   { value: "Turkish", label: "tr" },
 ];
 
-export default categories;
+export {categories};

@@ -1,0 +1,6 @@
+{
+  "printWidth": 120,
+  "importOrder": ["^[./a-zA-Z0-9]$", "^[./]", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
